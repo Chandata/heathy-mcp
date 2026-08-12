@@ -1,0 +1,16 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "org.heathy/nutrition",
+  "description": "Nutrition for 917 plant foods & 39 Ayurvedic herbs, reconciled across 11 national datasets",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/Chandata/heathy-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.heathy.org/mcp"
+    }
+  ]
+}
