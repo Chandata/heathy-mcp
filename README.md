@@ -129,10 +129,12 @@ Full credits and licence terms: <https://heathy.org/sources/>
 
 ## Licence and terms
 
-This repository holds documentation only, and carries no licence over the service or
-its data. Composition figures are open government data, credited per response and at
-the link above. The reconciliation, recipes, herb monographs and original content are
-© Heathy — see <https://heathy.org/terms/>.
+Repository documentation is released under
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Composition figures
+are open government data, credited per response and at the link above. The
+reconciliation, recipes, herb monographs and original content are © Heathy — see
+<https://heathy.org/terms/>. Use of the hosted service at mcp.heathy.org is governed
+by those terms.
 
 **Not medical advice.** The data is informational and does not diagnose or treat
 anything. A 100% raw-vegan diet does not supply adequate vitamin B12 or vitamin D.
