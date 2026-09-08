@@ -1,5 +1,7 @@
 # Heathy — nutrition data (MCP server)
 
+[![heathy-mcp MCP server — quality and maintenance score on Glama](https://glama.ai/mcp/servers/Chandata/heathy-mcp/badges/score.svg)](https://glama.ai/mcp/servers/Chandata/heathy-mcp)
+
 Nutrition for **917 whole plant foods** and **39 Ayurvedic herbs**, reconciled across
 **11 national food-composition datasets** — including **IFCT 2017 (India)**, which
 isn't available as an API anywhere else.
