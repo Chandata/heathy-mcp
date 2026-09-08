@@ -12,5 +12,10 @@
       "type": "streamable-http",
       "url": "https://mcp.heathy.org/mcp"
     }
-  ]
+  ],
+  "links": {
+    "homepage": "https://heathy.org",
+    "glama": "https://glama.ai/mcp/servers/Chandata/heathy-mcp",
+    "badge": "https://glama.ai/mcp/servers/Chandata/heathy-mcp/badges/score.svg"
+  }
 }
