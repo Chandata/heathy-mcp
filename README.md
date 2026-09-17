@@ -12,9 +12,10 @@ published data supports for a raw whole food.
 **Website:** <https://heathy.org> · **Contact:** hello@heathy.org
 **Free while in preview.**
 
-> This repository contains **documentation only** — the manifest and these notes.
-> The server is hosted; there is nothing to install. The  only
-> bridges stdio to the hosted endpoint, for directories that inspect servers in a container.
+> This repository contains no server code — only the manifest, these notes and a
+> `Dockerfile`. The server is hosted; there is nothing to install. The `Dockerfile`
+> only bridges stdio to the hosted endpoint, for directories that inspect servers in
+> a container.
 
 ---
 
