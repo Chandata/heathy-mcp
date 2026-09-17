@@ -13,7 +13,8 @@ published data supports for a raw whole food.
 **Free while in preview.**
 
 > This repository contains **documentation only** — the manifest and these notes.
-> The server is hosted; there is nothing to install.
+> The server is hosted; there is nothing to install. The  only
+> bridges stdio to the hosted endpoint, for directories that inspect servers in a container.
 
 ---
 
@@ -223,8 +224,8 @@ Full credits and licence terms: <https://heathy.org/sources/>
 
 ## Licence and terms
 
-Repository documentation is released under
-[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Composition figures
+The files in this repository (documentation, manifest and Dockerfile) are released under
+the [MIT licence](LICENSE). That licence covers this repository only. Composition figures
 come from the published tables above, each under its own terms, and are credited per
 response and at the link above. The reconciliation, recipes, herb monographs and
 original content are © Heathy — see <https://heathy.org/terms/>. Use of the hosted
