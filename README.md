@@ -10,6 +10,7 @@ published data supports for a raw whole food.
 
 **Endpoint:** `https://mcp.heathy.org/mcp` — Streamable HTTP (JSON-RPC 2.0)
 **Website:** <https://heathy.org> · **Contact:** hello@heathy.org
+**Operated by** CCT Technologies Ltd (England & Wales, company no. 06337577)
 **Free while in preview.**
 
 > This repository contains no server code — only the manifest, these notes and a
