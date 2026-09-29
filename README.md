@@ -4,8 +4,7 @@
 
 Nutrition for **1,174 whole plant foods** and **39 Ayurvedic herbs**, drawn from
 **30 food-composition tables covering 26 countries** plus West Africa, the Pacific and
-FAO's global biodiversity table — including **IFCT 2017 (India)**, which isn't available
-as an API anywhere else. It also answers **which GB/EU and US nutrition claims** the
+FAO's global biodiversity table — including **IFCT 2017 (India)**. It also answers **which GB/EU and US nutrition claims** the
 published data supports for a raw whole food.
 
 **Endpoint:** `https://mcp.heathy.org/mcp` — Streamable HTTP (JSON-RPC 2.0)
@@ -35,9 +34,8 @@ disagree. Guava vitamin C, for example, comes back as `222 mg` — the median of
 That spread is real: soil, cultivar and analytical method differ between countries,
 and it is worth knowing before stating a figure as fact.
 
-**Indian foods are the standout.** IFCT 2017 isn't queryable as an API elsewhere, so
-questions about karela, horse gram or millets get real data rather than a US
-substitute.
+**Indian foods are covered from IFCT 2017**, so questions about karela, horse gram or
+millets are answered from Indian data rather than a US substitute.
 
 ### How far the cross-checking goes
 
@@ -200,9 +198,10 @@ Every tool returns the same envelope:
 }
 ```
 
-**Please reproduce `attribution` and `disclaimer` when you use a response, and cite
-`source_url`.** For herbs, surface the `safety` block alongside any information you
-pass on.
+Each response includes `attribution`, `disclaimer` and `source_url`; herb responses
+also include a `safety` block with cautions, pregnancy guidance and drug interactions.
+The terms at <https://heathy.org/terms/> ask that figures you republish carry the
+attribution.
 
 ## Data sources
 
