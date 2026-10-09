@@ -189,7 +189,7 @@ away. Omit `topic` to list every topic.
 | `search_foods("karela")` | `gourd-karela-raw` |
 | `lookup_food("guava", ["vitamin-c"])` | 222 mg · median of 13 tables · range 68–273 |
 | `nutrient_ranking("iron", category: "legume", min_sources: 3)` | brown lentil 8 mg · white soya bean 7.91 mg · chickpea 5.4 mg |
-| `nutrient_ranking("magnesium")` | hulled hemp seed 591.5 mg (177.4 mg per 30 g) first · 37 spices, teas and seaweeds counted beside the list, led by dried sea lettuce 3,200 mg |
+| `nutrient_ranking("magnesium")` | hulled hemp seed 591.5 mg (177.4 mg per 30 g) first · 37 foods eaten a few grams at a time counted beside the list, led by dried sea lettuce 3,200 mg |
 | `check_claim("banana", nutrient: "potassium")` | GB/EU "source of" supported at 326 mg — but 5 tables support it and 4 don't |
 | `health_topic("anaemia")` | `iron-deficiency-anaemia` — nutrients, reasons, recipes |
 | `herb_monograph("haldi")` | turmeric — traditional, research, safety |
