@@ -95,11 +95,11 @@ first when you have a plain-English or local name.
 ### `nutrient_ranking`
 
 Rank foods by a nutrient per 100 g — the "highest in iron" question. Each row also gives
-the typical serving heathy.org holds for the food and the amount in it (cereals and legumes
+the typical serving heathy.org holds for the food and the amount in itXX
 have no serving yet); the order is per 100 g.
 
 Foods eaten a few grams at a time — dried herbs, spices, tea leaves, and dried seaweed,
-mushrooms and vegetables, 100 foods — are not ranked in `results`. They are reported
+mushrooms and vegetables, 102 foods — are not ranked in `results`. They are reported
 beside it in `also_higher.small_amounts`: a count of those holding more per 100 g than the
 last row, and the first five. They are ranked in `results` when `include_small_amounts` is
 true, and when the category asked for is mostly such foods (`spice`, `tea`, `seaweed`).
