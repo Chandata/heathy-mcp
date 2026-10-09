@@ -44,7 +44,7 @@ Be aware of coverage when you use the data:
 - **494 foods** are held by two or more tables — up to 25 for common produce.
 - **680 foods** come from a **single table**. Their `sources` count is `1`; there is
   nothing to cross-check them against. Use `min_sources` on `nutrient_ranking` to
-  keep these out of a ranking.
+  keep these out of a ranking; they are then listed beside it.
 - Some tables' licences allow their figures to be **shown but not averaged**. Those
   values appear under `by_source` but are not folded into the median, which is why
   `sources` can be lower than the number of values listed.
@@ -94,14 +94,23 @@ first when you have a plain-English or local name.
 
 ### `nutrient_ranking`
 
-Rank foods by a nutrient per 100 g — the "highest in iron" question.
+Rank foods by a nutrient per 100 g — the "highest in iron" question. Each row also gives
+the typical serving heathy.org holds for the food and the amount in it (cereals and legumes
+have no serving yet); the order is per 100 g.
+
+Foods eaten a few grams at a time — dried herbs, spices, tea leaves, and dried seaweed,
+mushrooms and vegetables, 100 foods — are not ranked in `results`. They are reported
+beside it in `also_higher.small_amounts`: a count of those holding more per 100 g than the
+last row, and the first five. They are ranked in `results` when `include_small_amounts` is
+true, and when the category asked for is mostly such foods (`spice`, `tea`, `seaweed`).
 
 | Argument | Type | |
 |---|---|---|
 | `nutrient` | string | **required** — slug or name |
 | `limit` | integer | optional, 1–100, default 20 |
 | `category` | string | optional — e.g. `fruit`, `legume`, `millet` |
-| `min_sources` | integer | optional — exclude single-source and thinly-sourced values |
+| `min_sources` | integer | optional, default 1 — smallest number of sources for a food to be ranked; foods below it are reported in `also_higher.fewer_sources` |
+| `include_small_amounts` | boolean | optional, default false — rank spices, tea and dried seaweed with every other food |
 
 ### `herb_monograph`
 
@@ -179,7 +188,8 @@ away. Omit `topic` to list every topic.
 |---|---|
 | `search_foods("karela")` | `gourd-karela-raw` |
 | `lookup_food("guava", ["vitamin-c"])` | 222 mg · median of 13 tables · range 68–273 |
-| `nutrient_ranking("iron", category: "legume", min_sources: 3)` | brown lentil 8 mg · white soya bean 7.6 mg · chickpea 5.4 mg |
+| `nutrient_ranking("iron", category: "legume", min_sources: 3)` | brown lentil 8 mg · white soya bean 7.91 mg · chickpea 5.4 mg |
+| `nutrient_ranking("magnesium")` | hulled hemp seed 591.5 mg (177.4 mg per 30 g) first · 37 spices, teas and seaweeds counted beside the list, led by dried sea lettuce 3,200 mg |
 | `check_claim("banana", nutrient: "potassium")` | GB/EU "source of" supported at 326 mg — but 5 tables support it and 4 don't |
 | `health_topic("anaemia")` | `iron-deficiency-anaemia` — nutrients, reasons, recipes |
 | `herb_monograph("haldi")` | turmeric — traditional, research, safety |
