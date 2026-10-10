@@ -1,8 +1,8 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "org.heathy/nutrition",
-  "description": "Nutrition for 1,174 plant foods from 30 national tables, plus GB/EU & US claim checking",
-  "version": "0.3.0",
+  "description": "Nutrition for more than 1,100 plant foods from 30 national tables, plus GB/EU & US claim checking",
+  "version": "0.6.0",
   "repository": {
     "url": "https://github.com/Chandata/heathy-mcp",
     "source": "github"

@@ -2,10 +2,11 @@
 
 [![heathy-mcp MCP server — quality and maintenance score on Glama](https://glama.ai/mcp/servers/Chandata/heathy-mcp/badges/score.svg)](https://glama.ai/mcp/servers/Chandata/heathy-mcp)
 
-Nutrition for **1,174 whole plant foods** and **39 Ayurvedic herbs**, drawn from
-**30 food-composition tables covering 26 countries** plus West Africa, the Pacific and
-FAO's global biodiversity table — including **IFCT 2017 (India)**. It also answers **which GB/EU and US nutrition claims** the
-published data supports for a raw whole food.
+Nutrition for **more than 1,100 whole plant foods and their flours** and **39 Ayurvedic
+herbs**, drawn from **30 food-composition tables covering 26 countries** plus West Africa,
+the Pacific and FAO's global biodiversity table — including **IFCT 2017 (India)**. It also
+answers **which GB/EU and US nutrition claims** the published data supports for a raw whole
+food or an unfortified flour.
 
 **Endpoint:** `https://mcp.heathy.org/mcp` — Streamable HTTP (JSON-RPC 2.0)
 **Website:** <https://heathy.org> · **Contact:** hello@heathy.org
@@ -41,8 +42,9 @@ millets are answered from Indian data rather than a US substitute.
 
 Be aware of coverage when you use the data:
 
-- **494 foods** are held by two or more tables — up to 25 for common produce.
-- **680 foods** come from a **single table**. Their `sources` count is `1`; there is
+- **Fewer than half the foods** are held by two or more tables — up to 26 for common
+  produce.
+- **More than half** come from a **single table**. Their `sources` count is `1`; there is
   nothing to cross-check them against. Use `min_sources` on `nutrient_ranking` to
   keep these out of a ranking; they are then listed beside it.
 - Some tables' licences allow their figures to be **shown but not averaged**. Those
@@ -71,20 +73,33 @@ No API key, no signup. A service card describing the server is at
 
 ### `lookup_food`
 
-Full per-100 g nutrient profile for a whole plant food, with provenance.
+Full per-100 g nutrient profile for a whole plant food or flour, with provenance.
 
 | Argument | Type | |
 |---|---|---|
 | `food` | string | **required** — slug, common name, or regional alias |
 | `nutrients` | string[] | optional — limit to specific nutrients rather than the full profile |
 
-The full profile covers 130 nutrients, plus 67 research-tier ones marked
+The full profile covers about 130 nutrients, plus a research tier marked
 `tier: "research"` (thin coverage, or a restatement of another nutrient).
+
+What comes back when the name is not an exact match:
+
+- **An everyday name** ("potato", "kela", "besan") opens the food most national tables
+  carry. When the match was loose, the answer says so in `matched_from`, with the other
+  foods it could have meant.
+- **Everyday nutrient names** ("fiber", "omega 3", "calories", "vit c") are understood. A
+  name that is not is listed in `unrecognised_nutrients`; the rest of the answer is returned.
+- **A cooked or prepared form** ("lentils boiled", "brown rice cooked") is refused, and the
+  reply names the unprepared food that is held. The unprepared figures are not returned in
+  its place: per 100 g they are a different food.
+- **A food that is not held** — animal foods, foods made from plants (tofu, pasta, sugar),
+  refined wheat flours — gets a reply saying which of those it is.
 
 ### `search_foods`
 
-Resolve a name to a slug, including Hindi, Sanskrit and botanical aliases. Call this
-first when you have a plain-English or local name.
+Resolve a name to a slug, including Hindi, Sanskrit and botanical aliases. Returns
+ranked candidates for a plain-English or local name.
 
 | Argument | Type | |
 |---|---|---|
@@ -125,9 +140,9 @@ block** (cautions, pregnancy guidance, drug interactions).
 
 ### `check_claim`
 
-For a **raw** whole food, which nutrition claims ("source of potassium", "high in
-vitamin C") the data supports under **GB/EU** rules (Reg. 1924/2006, per 100 g) and
-**US** rules (21 CFR 101.54, per RACC). It flags where the answer **depends on which
+For a **raw** whole food or an **unfortified single-ingredient flour**, which nutrition
+claims ("source of potassium", "high in vitamin C") the data supports under **GB/EU** rules
+(Reg. 1924/2006, per 100 g) and **US** rules (21 CFR 101.54, per RACC). It flags where the answer **depends on which
 national table was used**, listing the tables that do and don't support it.
 
 | Argument | Type | |
@@ -141,8 +156,8 @@ national table was used**, listing the tables that do and don't support it.
 **Scope.** This is a screening tool, not permission to make a claim. It refuses cooked
 and manufactured products, whose composition depends on recipe and processing. A
 supported claim still needs an analysis of the producer's own produce: the law looks
-at the final product, not at a reference table. Never use it to pick whichever table
-qualifies.
+at the final product, not at a reference table. It lists the tables that do and do not
+support a claim; it does not choose one that qualifies.
 
 ### `search_recipes`
 
@@ -173,9 +188,9 @@ per-serving nutrition, allergens and carbon footprint.
 
 What to eat for a health goal — the nutrients involved, why each one, and which raw
 recipes carry them. Accepts a goal ("gut health") or a named condition ("PCOS",
-"anaemia"). Topics people reach for with a diagnosis carry an explicit note on what
-the evidence does **and does not** support — reproduce it rather than summarising it
-away. Omit `topic` to list every topic.
+"anaemia"). Topics people reach for with a diagnosis carry a note on what the evidence
+does **and does not** support, with its own evidence rating. Omit `topic` to list every
+topic.
 
 | Argument | Type | |
 |---|---|---|
@@ -188,9 +203,11 @@ away. Omit `topic` to list every topic.
 |---|---|
 | `search_foods("karela")` | `gourd-karela-raw` |
 | `lookup_food("guava", ["vitamin-c"])` | 222 mg · median of 13 tables · range 68–273 |
-| `nutrient_ranking("iron", category: "legume", min_sources: 3)` | brown lentil 8 mg · white soya bean 7.91 mg · chickpea 5.4 mg |
+| `lookup_food("besan", ["protein"])` | `chickpea-flour` · 22.39 g · 3 tables |
+| `lookup_food("lentils boiled")` | refused — names `lentil-whole-brown`, held unprepared |
+| `nutrient_ranking("iron", category: "legume", min_sources: 3)` | brown lentil 8 mg · white soybean 7.91 mg · chickpea 5.4 mg |
 | `nutrient_ranking("magnesium")` | hulled hemp seed 591.5 mg (177.4 mg per 30 g) first · 37 foods eaten a few grams at a time counted beside the list, led by dried sea lettuce 3,200 mg |
-| `check_claim("banana", nutrient: "potassium")` | GB/EU "source of" supported at 326 mg — but 5 tables support it and 4 don't |
+| `check_claim("banana", nutrient: "potassium")` | GB/EU "source of" supported at 335 mg — 16 of 21 tables support it and 5 don't |
 | `health_topic("anaemia")` | `iron-deficiency-anaemia` — nutrients, reasons, recipes |
 | `herb_monograph("haldi")` | turmeric — traditional, research, safety |
 
@@ -229,7 +246,7 @@ Singapore SG FoodID · Pakistan FCT · Sri Lanka FCT
 EFCT · Australia AFCD (FSANZ) · Pacific Nutrient Database
 
 **Global** — FAO/INFOODS BioFoodComp · open-licence (CC BY) research papers for foods
-no national table covers
+no national table covers · Phenol-Explorer (polyphenol content, shown but not averaged)
 
 Full credits and licence terms: <https://heathy.org/sources/>
 
